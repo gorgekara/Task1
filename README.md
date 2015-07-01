@@ -1,3 +1,5 @@
+[![Codacy Badge](https://www.codacy.com/project/badge/ccb6841212d9454ca08df11c127527f0)](https://www.codacy.com/app/gorgekara/Task1)
+
 # Requirements
 To run the application there are some requirements which should be met:
 - MongoDB running on port 27017 (can be changed in /config/connections.js)

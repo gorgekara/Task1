@@ -25,18 +25,18 @@ module.exports = {
 	getDocuments: function (req, res) {
 		var perPage = 10,
 			columns = {
-				1: 'id',
-				2: 'category.name',
-				3: 'name',
-				4: 'description',
-				5: 'createdAt',
-				6: 'updatedAt'
+				0: 'id',
+				1: 'category',
+				2: 'name',
+				3: 'description',
+				4: 'createdAt',
+				5: 'updatedAt'
 			},
 			search = req.query.search.value,
 			searchQuery = ['%', search, '%'].join(''),
 			searchObj = {},
 			start = req.query.start,
-			orderBy = columns[Helper.getUrlParameter('order[0][column]', decodeURIComponent(req._parsedOriginalUrl.path))] || 'valStatus ASC',
+			orderBy = columns[Helper.getUrlParameter('order[0][column]', decodeURIComponent(req._parsedOriginalUrl.path))] || 'id ASC',
 			orderDirection =  req.query.order[0].dir || '';
 
 		if (search.length) {
