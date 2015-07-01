@@ -42,7 +42,7 @@ module.exports = {
   },
 
   beforeUpdate: function (value, cb) {
-    updatedRecord.updatedDate = moment().format('DD/MM/YYYY');
+    value.updatedDate = moment().format('DD/MM/YYYY');
 
     cb();
   },

@@ -38,7 +38,7 @@
 					<% _.each(categories, function (category) { %>
 
 						<option value="<%= category.id %>"
-							<% if (document.category && document.category[0] && document.category[0].id === category.id) { %>
+							<% if (document.category && document.category.id === category.id) { %>
 				            	selected="selected"
 				          	<% } %>>
 							<%= category.name %>

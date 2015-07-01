@@ -43,14 +43,12 @@ module.exports = {
 
 		if (search.length) {
 			searchObj = {
-				or: [
-				{
+				or: [{
 					name: searchQuery
-				},
-				{
+				},{
 					createdDate: searchQuery
 				}]
-			}
+			};
 		}
 
 		Document.count(function (err, numOfDocuments) {
@@ -100,7 +98,6 @@ module.exports = {
 							var dataArr = [];
 
 							documents.map(function (item) {
-								console.log(item);
 								dataArr.push([
 									item.id,
 									item.category && item.category.name,
@@ -126,7 +123,9 @@ module.exports = {
 
 	uploadDocument: function (req, res) {
 		req.file('document').upload(function whenDone(error, uploadedFile) {
-			if (error) return res.serverError(error);
+			if (error) {
+				return res.serverError(error);
+			}
 
 			if (uploadedFile.length) {
 				req.params.all().path = uploadedFile[0].fd;
@@ -206,6 +205,10 @@ module.exports = {
 	},
 
 	update: function (req, res) {
+		if (!req.params.all().id) {
+			res.redirect('/document');
+		}
+
 		Document.update(req.params.all().id, req.params.all(), function (error, document) {
 			res.redirect('/document');
 		});
