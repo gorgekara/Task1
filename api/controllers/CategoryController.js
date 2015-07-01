@@ -20,7 +20,7 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-		Category.create(req.params.all(), function (error) {
+		Category.create(req.params.all(), function () {
 			res.redirect('/category');
 		});
 	},
@@ -115,7 +115,7 @@ module.exports = {
 	},
 
 	update: function (req, res) {
-		Category.update(req.params.all().id, req.params.all(), function (error) {
+		Category.update(req.params.all().id, req.params.all(), function () {
 			res.redirect('/category');
 		});
 	}

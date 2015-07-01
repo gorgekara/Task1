@@ -129,7 +129,7 @@ module.exports = {
 				req.params.all().path = uploadedFile[0].fd;
 			}
 
-			Document.create(req.params.all(), function (error) {
+			Document.create(req.params.all(), function () {
 				res.redirect('/document');
 			});
 		});
@@ -207,7 +207,7 @@ module.exports = {
 			res.redirect('/document');
 		}
 
-		Document.update(req.params.all().id, req.params.all(), function (error) {
+		Document.update(req.params.all().id, req.params.all(), function () {
 			res.redirect('/document');
 		});
 	}
