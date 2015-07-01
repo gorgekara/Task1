@@ -1,0 +1,66 @@
+
+<% if (!document.id) { %>
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Upload Document</h1>
+		</div>
+		<div class="col-md-6">
+		</div>
+	</div>
+<% } %>
+
+<br />
+
+<div class="row">
+
+	<div class="col-md-6">
+
+		<form action="<% if (document && document.id) { %>/document/update<% } else { %>/document/uploadDocument<% } %>" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+			<% if (document.id) { %>
+				<input type="hidden" name="id" value="<%= document.id %>" />
+			<% } %>
+
+			<div class="form-group">
+				<label for="name"><%= __('Name') %></label>
+				<input type="text" name="name" class="form-control" id="name" value="<%= document && document.name %>" placeholder="Insert document name.." />
+			</div>
+
+			<div class="form-group">
+				<label for="name"><%= __('Description') %></label>
+				<textarea name="description" class="form-control" id="description" placeholder="Insert document description.."><%= document && document.description %></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="category">Category</label>
+				<select name="category" class="form-control client-select">
+					<% _.each(categories, function (category) { %>
+
+						<option value="<%= category.id %>"
+							<% if (document.category && document.category[0] && document.category[0].id === category.id) { %>
+				            	selected="selected"
+				          	<% } %>>
+							<%= category.name %>
+						</option>
+
+					<% }); %>
+				</select>
+			</div>
+
+			<% if (!document.id) { %>
+				<div class="form-group">
+					<label for="document"><%= __('File') %></label>
+					<input type="file" id="document" name="document" class="form-control" />
+				</div>
+			<% } %>
+
+			<hr />
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-success"><%= __('Save') %></button>
+			</div>
+
+		</form>
+	</div>
+</div>

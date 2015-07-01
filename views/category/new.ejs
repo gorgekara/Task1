@@ -1,0 +1,31 @@
+<% if (!category.id) { %>
+	<h1>New Category</h1>
+<% } %>
+
+<br />
+
+<div class="row">
+
+	<div class="col-md-6">
+
+		<form action="<% if (category && category.id) { %>/category/update<% } else { %>/category/create<% } %>" method="POST">
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+			<% if (category.id) { %>
+				<input type="hidden" name="id" value="<%= category.id %>" />
+			<% } %>
+
+			<div class="form-group">
+				<label for="name"><%= __('Name') %></label>
+				<input type="text" name="name" class="form-control" id="name" value="<%= category && category.name %>" placeholder="Insert category name.." />
+			</div>
+
+			<hr />
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-success"><%= __('Save') %></button>
+			</div>
+
+		</form>
+	</div>
+</div>

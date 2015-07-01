@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 1</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+    <!--  
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+        
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+            
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/dependencies/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/dependencies/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/styles/dependencies/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+
+    <% if (typeof _csrf !== 'undefined') { %>
+      <script type="text/javascript">
+        window._csrf = "<%= _csrf %>";
+      </script>
+    <% } %>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <%- partial ('partials/navigation.ejs') %>
+      <%- body %>
+      <%- partial ('partials/footer.ejs') %>
+    </div>
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery-2.1.4.min.js"></script>
+    <script src="/js/dependencies/bootstrap.min.js"></script>
+    <script src="/js/dependencies/jquery.dataTables.min.js"></script>
+    <script src="/js/dependencies/regula.min.js"></script>
+    <script src="/js/shared/events.js"></script>
+    <!--SCRIPTS END-->
+
+    <%- blocks.localScripts %>
+  </body>
+</html>
