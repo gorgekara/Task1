@@ -1,19 +1,8 @@
-(function ($) {
-	'use strict';
+var NS = NS || {};
+NS.Categories = (function ($) {
+	'use strict';	
 
-	var instance = {};
-
-	instance.initTable = function (url, table, columns) {
-		instance.table = table.DataTable({
-	    	processing: true,
-	        serverSide: true,
-	        ajax: url || '',
-	        pageLength: 10,
-	    	columns: columns
-	    });
-	};
-
-	instance.initTable('/category/getCategories', $('.dataTable'), [
+	NS.Base.initTable('/category/getCategories', $('.dataTable'), [
         null,
 	    null,
 	    null,

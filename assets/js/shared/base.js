@@ -1,5 +1,19 @@
-(function ($) {
+var NS = NS || {};
+NS.Base = (function ($) {
 	'use strict';
+
+	var instance = {},
+		editModal = '#edit-modal';
+
+	instance.initTable = function (url, table, columns) {
+		instance.table = table.DataTable({
+	    	processing: true,
+	        serverSide: true,
+	        ajax: url || '',
+	        pageLength: 10,
+	    	columns: columns
+	    });
+	};
 
 	$('body')
 		.on('click', '.btn-delete', function (event) {
@@ -13,7 +27,7 @@
 	    .on('click', '.btn-edit', function (event) {
 	    	event.preventDefault();
 
-	    	$('#edit-modal').modal('show');
+	    	$(editModal).modal('show');
 
 	    	$.ajax({
 	    		url: $(this).attr('href'),
@@ -22,9 +36,10 @@
 	    			_csrf: window._csrf
 	    		},
 	    		success: function (data) {
-	    			$('#edit-modal').find('.modal-body').html(data);
+	    			$(editModal).find('.modal-body').html(data);
 	    		}
 	    	});
 	    });
 
+	return instance;
 }(jQuery));
