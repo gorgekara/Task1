@@ -5,8 +5,6 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var moment = require('moment');
-
 module.exports = {
 	
 	index: function (req, res) {
@@ -131,7 +129,7 @@ module.exports = {
 				req.params.all().path = uploadedFile[0].fd;
 			}
 
-			Document.create(req.params.all(), function (error, document) {
+			Document.create(req.params.all(), function (error) {
 				res.redirect('/document');
 			});
 		});
@@ -170,7 +168,7 @@ module.exports = {
 
 		Document
 			.destroy(req.param('id'))
-			.exec(function (error, document) {
+			.exec(function (error) {
 				if (error) {
 					return res.serverError(error);
 				}
@@ -209,7 +207,7 @@ module.exports = {
 			res.redirect('/document');
 		}
 
-		Document.update(req.params.all().id, req.params.all(), function (error, document) {
+		Document.update(req.params.all().id, req.params.all(), function (error) {
 			res.redirect('/document');
 		});
 	}

@@ -20,7 +20,7 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-		Category.create(req.params.all(), function (error, category) {
+		Category.create(req.params.all(), function (error) {
 			res.redirect('/category');
 		});
 	},
@@ -86,7 +86,7 @@ module.exports = {
 
 		Category
 			.destroy(req.param('id'))
-			.exec(function (error, category) {
+			.exec(function (error) {
 				if (error) {
 					return res.serverError(error);
 				}
@@ -115,7 +115,7 @@ module.exports = {
 	},
 
 	update: function (req, res) {
-		Category.update(req.params.all().id, req.params.all(), function (error, category) {
+		Category.update(req.params.all().id, req.params.all(), function (error) {
 			res.redirect('/category');
 		});
 	}
