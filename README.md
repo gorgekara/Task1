@@ -29,6 +29,8 @@ After they are installed start the server with (depending on which you are using
 - Glyphicons
 
 ### Back-end
+- Sails.js
+- Waterline ORM
 - Grunt
 - EJS (Embedded JavaScript Templates)
 - Moment for formatting dates
