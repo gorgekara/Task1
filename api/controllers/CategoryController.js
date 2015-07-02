@@ -28,13 +28,13 @@ module.exports = {
 	getCategories: function (req, res) {
 		var perPage = 10,
 			columns = {
-				1: 'id',
-				2: 'category.name',
-				5: 'createdAt',
-				6: 'updatedAt'
+				0: 'id',
+				1: 'category.name',
+				2: 'createdAt',
+				3: 'updatedAt'
 			},
 			start = req.query.start,
-			orderBy = columns[Helper.getUrlParameter('order[0][column]', decodeURIComponent(req._parsedOriginalUrl.path))] || 'valStatus ASC',
+			orderBy = columns[Helper.getUrlParameter('order[0][column]', decodeURIComponent(req._parsedOriginalUrl.path))] || 'id ASC',
 			orderDirection =  req.query.order[0].dir || '';
 
 		Category.count(function (err, numOfCategories) {
