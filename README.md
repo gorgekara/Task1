@@ -37,5 +37,8 @@ After they are installed start the server with (depending on which you are using
 # ER Diagram
 ![image](http://s10.postimg.org/infhfpvnd/Untitled_drawing.png)
 
+# Documentation
+Software Design Specification in PDF and ODT format can be found in the /documentation folder in the project.
+
 # About the framework
 You can check out Sails.js here: [http://sailsjs.org/](http://sailsjs.org/)
